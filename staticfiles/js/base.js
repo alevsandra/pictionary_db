@@ -1,5 +1,5 @@
 //setting countdown
-let seconds = 5;
+let seconds = 60;
 //countdown function
 var x = setInterval(function onTimer() {
     //updating clock
