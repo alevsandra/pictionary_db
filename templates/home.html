@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Start{% endblock title %}
+
+{% block content %}
+    <br/>
+    <div class="jumbotron">
+        <h1 class="display-4">Baza danych kalambury</h1>
+        <p class="lead">Strona została stworzona na potrzeby zebrania bazy rysunków do komputerowej gry w kalambury.</p>
+        <p class="lead">Zasady:</p>
+        <li class="lead">na każde hasło przeznaczona jest minuta</li>
+        <li class="lead">jedna rozgrywka zawiera 5 haseł</li>
+        <li class="lead">gra rozpoczyna się po naciśnięciu przycisku "Start"</li>
+        <hr class="my-4">
+        <a class="btn btn-success" href="{% url 'paint_app' category.pk %}" role="button">Start</a>
+    </div>
+{% endblock content %}

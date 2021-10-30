@@ -1,0 +1,22 @@
+#paint {
+    border: 1px solid #777777;
+    width     : 750px;
+    height    : 400px;
+    margin: auto;
+    display: block;
+    background-color: white;
+}
+
+.c-buttons {
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    border: 1px solid #777777;
+    outline: none;
+    padding: 0;
+    margin: 5px;
+}
+
+.c-buttons:hover {
+    opacity: 0.3;
+}
