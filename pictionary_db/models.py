@@ -5,7 +5,7 @@ from random import randint
 
 class CategoryManager(models.Manager):
     def random(self):
-        count = self.aggregate(count=Count('id'))['count']
+        count = len(Category.objects.all())
         random_index = randint(0, count - 1)
         return self.all()[random_index]
 
