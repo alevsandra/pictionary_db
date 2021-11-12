@@ -34,9 +34,23 @@ function next_page() {
 
 //temp model creation
 function random_temp_category() {
-    $.post(random_link, {}, function myCallback(data) {
-        location.href = first_category.replace('1', data.pid);
+    $.post(random_link, {
     });
+
+    // let f_category = "";
+
+    $.post(xd, {
+    });
+
+    // $.get(random_link, {
+    //     success: function(data) {
+    //         document.getElementById('startup').innerHTML = data.url;
+    //         location.href = data.url;
+    //     }
+    // });
+
+
+    // location.href = first_category.replace('1', f_category);
 }
 
 //initializing canvas

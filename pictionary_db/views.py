@@ -1,8 +1,9 @@
 import time
 
+import simplejson as simplejson
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
@@ -13,14 +14,6 @@ from .models import TempCategory, Drawing, Category
 class HomePageView(TemplateView):
     template_name = 'home.html'
     model = TempCategory
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Add in a QuerySet first record from table
-        context['category'] = TempCategory.objects.get(
-            pk=min(TempCategory.objects.filter().values_list('pk', flat=True)))
-        return context
 
 
 class PaintAppView(DetailView):
@@ -83,3 +76,19 @@ def paint(request):
         file_data = Drawing(category=current_category, time=time.time(), picture=image)
         file_data.save()
         return HttpResponseRedirect('/')
+
+
+@csrf_exempt
+def random_temp(request):
+    if request.method == 'POST':
+        # adding randomly to model TempCategory 5 categories
+        while len(TempCategory.objects.all()) < 5:
+            s = Category.objects.random()
+            if not TempCategory.objects.filter(name=s).exists():
+                TempCategory.objects.create(name=s)
+        # picking up the first category with the smallest id
+        category_f = TempCategory.objects.get(
+            pk=min(TempCategory.objects.filter().values_list('pk', flat=True)))
+        # forwarding first category id to request response
+        json_dump = simplejson.dumps({'pid': category_f.pk})
+        return HttpResponse(json_dump, content_type='application/json')

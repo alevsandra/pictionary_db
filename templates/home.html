@@ -5,6 +5,10 @@
 {% block content %}
     <br/>
     <div class="jumbotron">
+        <script type=text/javascript>
+                let random_link = "{% url 'random_temp' %}";
+                let first_category = "{% url 'paint_app' 1 %}";
+            </script>
         <h1 class="display-4">Baza danych kalambury</h1>
         <p class="lead">Strona została stworzona na potrzeby zebrania bazy rysunków do komputerowej gry w kalambury.</p>
         <p class="lead">Zasady:</p>
@@ -12,6 +16,6 @@
         <li class="lead">jedna rozgrywka zawiera 5 haseł</li>
         <li class="lead">gra rozpoczyna się po naciśnięciu przycisku "Start"</li>
         <hr class="my-4">
-        <a class="btn btn-success" href="{% url 'paint_app' category.pk %}" role="button">Start</a>
+        <a class="btn btn-success" onclick="random_temp_category()" role="button">Start</a>
     </div>
 {% endblock content %}

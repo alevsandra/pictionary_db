@@ -32,6 +32,13 @@ function next_page() {
     else location.href = result_page;
 }
 
+//temp model creation
+function random_temp_category() {
+    $.post(random_link, {}, function myCallback(data) {
+        location.href = first_category.replace('1', data.pid);
+    });
+}
+
 //initializing canvas
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext("2d");
