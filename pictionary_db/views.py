@@ -1,6 +1,6 @@
 import time
 
-import simplejson as simplejson
+import simplejson
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, HttpResponse
