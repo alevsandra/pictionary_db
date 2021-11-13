@@ -130,11 +130,20 @@ window.addEventListener('load', () => {
 
 });
 function save (){
-    var image = canvas.toDataURL("image/png");
 
-    $.post(save_link, {
-        category: category_name,
-        save_image: image,
-    });
+    if (!isCanvasBlank(canvas))
+    {
+        var image = canvas.toDataURL("image/png");
 
+        $.post(save_link, {
+            category: category_name,
+            save_image: image,
+        });
+    }
+
+}
+function isCanvasBlank(canvas) {
+  return !canvas.getContext('2d')
+    .getImageData(0, 0, canvas.width, canvas.height).data
+    .some(channel => channel !== 0);
 }
