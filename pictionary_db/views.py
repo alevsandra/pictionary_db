@@ -67,8 +67,9 @@ def paint(request):
             if record.name == category_name:
                 current_category = record
         image = request.POST['save_image']
-        file_data = Drawing(category=current_category, time=time.time(), picture=image)
-        file_data.save()
+        if not Drawing.objects.filter(picture=image).exists():
+            file_data = Drawing(category=current_category, time=time.time(), picture=image)
+            file_data.save()
         return HttpResponseRedirect('/')
 
 
