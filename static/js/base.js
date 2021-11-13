@@ -31,7 +31,10 @@ function next_page() {
             else
                 location.href = result_page;
         }, () => {
-            location.href = result_page;
+            if (model_length > 1)
+                location.href = new_picture;
+            else
+                location.href = result_page;
         }
     );
 
