@@ -21,15 +21,23 @@ function next_page() {
     save();
 
     //sending post request to delete from temp model
-        $.ajax({
-            type: 'POST',
-            url: deletion_link,
-            headers: {'X-CSRFToken': csrf_token},
-        });
+    $.ajax({
+        type: 'POST',
+        url: deletion_link,
+        headers: {'X-CSRFToken': csrf_token},
+    }).then(() => {
+            if (model_length > 1)
+                location.href = new_picture;
+            else
+                location.href = result_page;
+        }, () => {
+            location.href = result_page;
+        }
+    );
 
     //redirect link to the next page
-    if (model_length > 1) location.href = new_picture;
-    else location.href = result_page;
+    // if (model_length > 1) location.href = new_picture;
+    // else location.href = result_page;
 }
 
 //temp model creation

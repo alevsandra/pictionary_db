@@ -43,12 +43,6 @@ class ResultPageView(TemplateView):
 class DeleteCategoryView(SuccessMessageMixin, DeleteView):
     model = TempCategory
 
-    # if TempCategory.objects.exists():
-    #     success_url = reverse_lazy('paint_app',
-    #                                kwargs={'pk': min(TempCategory.objects.filter().values_list('pk', flat=True))+1})
-    # else:
-    #     success_url = reverse_lazy('result_page')
-
     def get_success_url(self, **kwargs):
         if TempCategory.objects.exists():
             return reverse_lazy('paint_app',

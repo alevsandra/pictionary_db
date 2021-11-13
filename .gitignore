@@ -1,3 +1,5 @@
 .env
 __pycache__/
 db.sqlite3
+pictionary_db_drawing.sql
+pictionary_db_category.sql
