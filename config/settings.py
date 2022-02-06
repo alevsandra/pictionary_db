@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'pictionary_db',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
