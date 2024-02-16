@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "~=3.1.0"
-pillow = "==10.0.1"
+pillow = "==10.2.0"
 whitenoise = "==5.1.0"
 environs = {version = "==8.0.0", extras = ["django"]}
 psycopg2-binary = "*"
